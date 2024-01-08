@@ -1,10 +1,8 @@
-FROM alpine:3.16.8
+FROM php:8.1-alpine
 
 RUN apk --update --no-cache add curl ca-certificates nginx
-RUN apk add php81 php81-xml php81-cli php81-exif php81-fpm php81-session php81-soap php81-openssl php81-gmp php81-pdo_odbc php81-json php81-dom php81-pdo php81-zip php81-mysqli php81-sqlite3 php81-pdo_pgsql php81-bcmath php81-gd php81-odbc php81-pdo_mysql php81-pdo_sqlite php81-gettext php81-xmlreader php81-xmlwriter php81-bz2 php81-iconv php81-pdo_dblib php81-curl php81-ctype php81-phar php81-fileinfo php81-mbstring php81-tokenizer php81-simplexml
+RUN apk add php php-xml php-cli php-exif php-fpm php-session php-soap php-openssl php-gmp php-pdo_odbc php-json php-dom php-pdo php-zip php-mysqli php-sqlite3 php-pdo_pgsql php-bcmath php-gd php-odbc php-pdo_mysql php-pdo_sqlite php-gettext php-xmlreader php-xmlwriter php-bz2 php-iconv php-pdo_dblib php-curl php-ctype php-phar php-fileinfo php-mbstring php-tokenizer php-simplexml
 COPY --from=composer:latest  /usr/bin/composer /usr/bin/composer
-
-RUN ln -s /usr/bin/php8.1 /usr/bin/php
 
 USER container
 ENV  USER container
@@ -13,5 +11,5 @@ ENV HOME /home/container
 WORKDIR /home/container
 COPY ./entrypoint.sh /entrypoint.sh
 
-
 CMD ["/bin/ash", "/entrypoint.sh"]
+
