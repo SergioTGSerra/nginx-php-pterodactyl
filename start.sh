@@ -9,7 +9,7 @@ if [ -f /home/container/webroot/composer.json ]; then
 fi
 
 echo "⟳ Starting PHP-FPM..."
-/usr/sbin/php-fpm --fpm-config /home/container/php-fpm/php-fpm.conf --daemonize
+/usr/local/sbin/php-fpm --fpm-config /home/container/php-fpm/php-fpm.conf --daemonize
 
 echo "⟳ Starting Nginx..."
 echo "✓ Successfully started"
